@@ -3,6 +3,7 @@ package rysi.web.holaweb.control;
 import java.math.BigDecimal;
 import java.util.Date;
 import javax.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import rysi.web.holaweb.repositorios.ArticulosRepository;
 import rysi.web.holaweb.entidades.Articulo;
 
 /**
@@ -19,18 +21,15 @@ import rysi.web.holaweb.entidades.Articulo;
  */
 @Controller
 public class HolaController {
-    
+
+    @Autowired
+    ArticulosRepository repArticulos;
+            
     @RequestMapping("/hola")
     public ModelAndView decirHola() {
         ModelAndView mav = new ModelAndView("saludo.jsp");
         mav.addObject("mensaje", "Hola mundo en Spring MVC");
-        
-        Articulo art = new Articulo();
-        art.setClave("ABCD0001");
-        art.setNombre("Articulo de Prueba");
-        art.setPrecioUnitario(new BigDecimal("123.99"));
-        art.setFechaIntroduccion(new Date(115, 9, 12));
-        mav.addObject("articulo", art);
+        mav.addObject("articulo", repArticulos.getArticulo("001"));
         return mav;
     }
     
