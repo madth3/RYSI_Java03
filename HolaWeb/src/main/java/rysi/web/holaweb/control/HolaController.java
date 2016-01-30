@@ -8,6 +8,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -75,7 +76,15 @@ public class HolaController {
         }
         ModelAndView mav = new ModelAndView("resultado.jsp");
         mav.addObject("articulo", articulo);
-        return mav;        
+        return mav;
+    }
+    
+    @RequestMapping("/articulos/{clave}")
+    public ModelAndView consultarArticulo(
+            @PathVariable String clave) {
+        ModelAndView mav = new ModelAndView("/resultado.jsp");
+        mav.addObject("articulo", repArticulos.getArticulo(clave));
+        return mav;
     }
 }
 
