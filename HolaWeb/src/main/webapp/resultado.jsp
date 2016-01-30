@@ -7,14 +7,14 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>${mensaje}</h1>
         
-        Art&iacute;culo:
+        Art&iacute;culo agregado:
         <ul>
             <li>${articulo.clave}</li>
             <li>${articulo.nombre}</li>
             <li>${articulo.precioUnitario}</li>
             <li>${articulo.fechaIntroduccion}</li>
+            <li>${articulo.existencia}</li>
         </ul>
     </body>
 </html>
