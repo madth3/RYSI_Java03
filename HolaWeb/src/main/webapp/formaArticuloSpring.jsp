@@ -10,7 +10,9 @@
         <h1>Agregar articulo (Spring)</h1>
         <sf:form action="agregarArticuloObj" 
                  method="POST" commandName="articulo">
+            <sf:errors path="clave"/>
             Clave: <sf:input path="clave"/><br>
+            <sf:errors path="nombre"/>
             Nombre: <sf:input path="nombre"/><br>
             Precio: <sf:input path="precioUnitario"/><br>
             Fecha Introducci&oacute;n: <sf:input path="fechaIntroduccion"/><br>

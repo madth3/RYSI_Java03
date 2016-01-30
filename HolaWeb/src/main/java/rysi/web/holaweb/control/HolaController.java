@@ -2,8 +2,10 @@ package rysi.web.holaweb.control;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import javax.validation.Valid;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -65,8 +67,13 @@ public class HolaController {
     @RequestMapping(value = "/agregarArticuloObj", 
             method = RequestMethod.POST)
     public ModelAndView agregarObjetoArticulo(
-            @ModelAttribute("articulo") Articulo articulo) {
-        
+            @Valid
+            @ModelAttribute("articulo") Articulo articulo,
+            BindingResult resultado) {
+        if (resultado.hasErrors()) {
+            ModelAndView mav = new ModelAndView("formaArticuloSpring.jsp");
+            return mav;                    
+        }
         ModelAndView mav = new ModelAndView("resultado.jsp");
         mav.addObject("articulo", articulo);
         return mav;        
