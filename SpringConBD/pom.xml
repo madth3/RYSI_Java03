@@ -45,10 +45,6 @@
                     <artifactId>hibernate-entitymanager</artifactId>
                     <groupId>org.hibernate</groupId>
                 </exclusion>
-                <exclusion>
-                    <artifactId>tomcat-jdbc</artifactId>
-                    <groupId>org.apache.tomcat</groupId>
-                </exclusion>
             </exclusions>
         </dependency>
         <dependency>
